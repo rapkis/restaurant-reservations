@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Customer extends Model
 {
@@ -13,7 +14,7 @@ class Customer extends Model
         'phone',
     ];
 
-    public function reservations()
+    public function reservations(): HasMany
     {
         return $this->hasMany(Reservation::class);
     }

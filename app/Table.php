@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Table extends Model
 {
@@ -10,12 +12,12 @@ class Table extends Model
         'capacity',
     ];
 
-    public function restaurant()
+    public function restaurant(): BelongsTo
     {
         return $this->belongsTo(Restaurant::class);
     }
 
-    public function reservations()
+    public function reservations(): BelongsToMany
     {
         return $this->belongsToMany(Reservation::class);
     }
