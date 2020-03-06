@@ -1,0 +1,41 @@
+version: '2'
+services:
+  nginx:
+    build: ./config/docker/nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes_from:
+      - php
+    links:
+      - php
+  php:
+    build: ./config/docker/php
+    ports:
+      - "9000:9000"
+    tty: true
+    volumes:
+      - ./:/var/www/restaurant-reservations
+    links:
+      - mysql
+      - redis
+    environment:
+      - EXAMPLE=var
+    working_dir: /var/www/restaurant-reservations
+  mysql:
+    image: mariadb
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=restaurant-reservations
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+    volumes:
+      - my-datavolume:/var/lib/mysql
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+volumes:
+  my-datavolume:
