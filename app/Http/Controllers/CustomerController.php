@@ -9,7 +9,7 @@ use Illuminate\View\View;
 class CustomerController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of customers.
      *
      * @return View
      */
@@ -21,7 +21,7 @@ class CustomerController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified customer from storage.
      *
      * @param  Customer $customer
      * @return RedirectResponse
