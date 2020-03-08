@@ -44,4 +44,18 @@ class Restaurant extends Model
         return Carbon::parse($value)->format('H:i');
     }
 
+    public function isAvailableBetween(Carbon $start, Carbon $end): bool
+    {
+        $openTime = Carbon::parse($this->open_time);
+        $closeTime = Carbon::parse($this->close_time);
+        $start = Carbon::parse($start->format('H:i'));
+        $end = Carbon::parse($end->format('H:i'));
+
+        if($openTime->greaterThan($start) || $closeTime->lessThan($end)) {
+            return false;
+        }
+
+        return true;
+    }
+
 }
