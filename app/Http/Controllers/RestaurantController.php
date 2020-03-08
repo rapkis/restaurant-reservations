@@ -74,7 +74,6 @@ class RestaurantController extends Controller
      */
     public function update(StoreRestaurantRequest $request, Restaurant $restaurant): RedirectResponse
     {
-        //TODO: don't update tables here, use TableController instead
         $this->restaurantService->update($restaurant, $request->validated());
 
         return redirect()->route('restaurants.index')->with('status', 'Restaurant Updated');
