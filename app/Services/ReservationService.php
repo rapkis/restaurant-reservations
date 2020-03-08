@@ -49,7 +49,7 @@ class ReservationService
         return $reservation;
     }
 
-    private function restaurantAvailability(Restaurant $restaurant, Carbon $startTime, Carbon $endTime)
+    private function restaurantAvailability(Restaurant $restaurant, Carbon $startTime, Carbon $endTime): Collection
     {
         if(!$restaurant->isAvailableBetween($startTime, $endTime)) {
             throw new RestaurantUnavailableException('The restaurant only accepts reservations within working hours');
@@ -62,10 +62,6 @@ class ReservationService
     {
         if(empty($tables) || $tables->sum('capacity') < $partySize) {
             throw new TablesUnavailableException('There are currently no available tables for your party');
-        }
-
-        if($table = $tables->firstWhere('capacity') === $partySize) {
-            return collect($table);
         }
 
         return $this->getTablesWithClosestCapacity($partySize, $tables);

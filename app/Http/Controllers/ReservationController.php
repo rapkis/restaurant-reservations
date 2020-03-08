@@ -20,7 +20,7 @@ class ReservationController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of reservations.
      *
      * @return View
      */
@@ -32,7 +32,7 @@ class ReservationController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new reservation.
      *
      * @return View
      */
@@ -44,7 +44,7 @@ class ReservationController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created reservation in storage.
      *
      * @param  StoreReservationRequest  $request
      * @return RedirectResponse
@@ -62,7 +62,7 @@ class ReservationController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified reservation from storage.
      *
      * @param  Reservation $reservation
      * @return RedirectResponse
