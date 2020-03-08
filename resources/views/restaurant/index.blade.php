@@ -12,6 +12,8 @@
             <thead>
             <tr>
                 <th class="border px-4 py-2">Title</th>
+                <th class="border px-4 py-2">Tables</th>
+                <th class="border px-4 py-2">Reservations</th>
                 <th class="border px-4 py-2">Actions</th>
             </tr>
             </thead>
@@ -19,6 +21,8 @@
             @foreach ($restaurants as $restaurant)
                 <tr>
                     <td class="border px-4 py-2">{{ $restaurant->name }}</td>
+                    <td class="border px-4 py-2">{{ $restaurant->tables->count() }}</td>
+                    <td class="border px-4 py-2">{{ $restaurant->reservations->count() }}</td>
                     <td class="border px-4 py-2">
                         <div class="flex">
                             <a href="{{ route('restaurants.edit', $restaurant->id) }}">

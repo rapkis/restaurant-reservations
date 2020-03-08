@@ -8,7 +8,7 @@
 @endif
 @if ($errors->any())
     <div id="notification" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
-        <strong class="font-bold">Klaida:</strong>
+        <strong class="font-bold">Error:</strong>
         @foreach ($errors->all() as $error)
             <span class="block sm:inline">{{ $error }}</span>
         @endforeach

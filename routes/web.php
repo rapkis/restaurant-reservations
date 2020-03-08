@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('restaurants', 'RestaurantController')->except([
+    'show'
+]);
+
+Route::resource('tables', 'TableController')->only([
+    'update', 'destroy'
+]);

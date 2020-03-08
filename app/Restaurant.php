@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -22,4 +23,25 @@ class Restaurant extends Model
     {
         return $this->hasMany(Reservation::class);
     }
+
+    public function setOpenTimeAttribute($value)
+    {
+        $this->attributes['open_time'] = Carbon::parse($value)->toTimeString();
+    }
+
+    public function setCloseTimeAttribute($value)
+    {
+        $this->attributes['close_time'] = Carbon::parse($value)->toTimeString();
+    }
+
+    public function getOpenTimeAttribute($value)
+    {
+        return Carbon::parse($value)->format('H:i');
+    }
+
+    public function getCloseTimeAttribute($value)
+    {
+        return Carbon::parse($value)->format('H:i');
+    }
+
 }
