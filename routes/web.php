@@ -13,10 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', 'ReservationController@create')->name('reservations.create');
 Route::resource('restaurants', 'RestaurantController')->except([
     'show'
 ]);
 
 Route::resource('tables', 'TableController')->only([
     'update', 'destroy'
+]);
+
+Route::resource('reservations', 'ReservationController')->except([
+    'create', 'show', 'edit', 'update'
+]);
+
+Route::resource('customers', 'CustomerController')->only([
+    'index', 'destroy'
 ]);

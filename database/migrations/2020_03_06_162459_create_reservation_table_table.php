@@ -16,6 +16,16 @@ class CreateReservationTableTable extends Migration
         Schema::create('reservation_table', function (Blueprint $table) {
             $table->unsignedBigInteger('reservation_id');
             $table->unsignedBigInteger('table_id');
+
+            $table->foreign('reservation_id')
+                ->references('id')
+                ->on('reservations')
+                ->onDelete('cascade');
+
+            $table->foreign('table_id')
+                ->references('id')
+                ->on('tables')
+                ->onDelete('cascade');
         });
     }
 

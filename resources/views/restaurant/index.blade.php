@@ -14,6 +14,8 @@
                 <th class="border px-4 py-2">Title</th>
                 <th class="border px-4 py-2">Tables</th>
                 <th class="border px-4 py-2">Reservations</th>
+                <th class="border px-4 py-2">Open Time</th>
+                <th class="border px-4 py-2">Close Time</th>
                 <th class="border px-4 py-2">Actions</th>
             </tr>
             </thead>
@@ -23,6 +25,8 @@
                     <td class="border px-4 py-2">{{ $restaurant->name }}</td>
                     <td class="border px-4 py-2">{{ $restaurant->tables->count() }}</td>
                     <td class="border px-4 py-2">{{ $restaurant->reservations->count() }}</td>
+                    <td class="border px-4 py-2">{{ $restaurant->open_time }}</td>
+                    <td class="border px-4 py-2">{{ $restaurant->close_time }}</td>
                     <td class="border px-4 py-2">
                         <div class="flex">
                             <a href="{{ route('restaurants.edit', $restaurant->id) }}">

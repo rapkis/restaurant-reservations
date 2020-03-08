@@ -9,13 +9,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Reservation extends Model
 {
     protected $fillable = [
-        'reservation_date',
-        'reservation_duration',
+        'reservation_start',
+        'reservation_end',
         'party_size',
     ];
 
     protected $casts = [
-        'reservation_date' => 'datetime',
+        'reservation_start' => 'datetime',
+        'reservation_end' => 'datetime',
     ];
 
     public function customer(): BelongsTo
