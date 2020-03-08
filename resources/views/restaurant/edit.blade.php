@@ -66,9 +66,6 @@
                 </button>
             </div>
             <div class="w-full px-3 mb-6 md:mb-0" id="tables_fields">
-                @foreach($restaurant->tables as $table)
-                    @include('restaurant.partials.tables.edit', ['capacity' => $table->capacity])
-                @endforeach
                 <template id="table_template">
                     @include('restaurant.partials.tables.create')
                 </template>
@@ -87,6 +84,9 @@
             </button>
         </div>
     </form>
+    @foreach($restaurant->tables as $table)
+        @include('restaurant.partials.tables.edit', ['table' => $table])
+    @endforeach
 @endsection
 @section('script')
     <script>

@@ -24,7 +24,7 @@ class UpdateTableRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'capacity' => 'required|integer'
         ];
     }
 }

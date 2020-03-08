@@ -2,30 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\UpdateTableRequest;
+use App\Table;
+use Illuminate\Http\RedirectResponse;
 
 class TableController extends Controller
 {
     /**
      * Update the specified table in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  UpdateTableRequest  $request
+     * @param  Table $table
+     * @return RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(UpdateTableRequest $request, Table $table): RedirectResponse
     {
-        //
+        $table->update($request->validated());
+
+        return redirect()->back()->with('status', 'Table Updated');
     }
 
     /**
      * Remove the specified table from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  Table $table
+     * @return RedirectResponse
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Table $table): RedirectResponse
     {
-        //
+        $table->delete();
+
+        return redirect()->back()->with('status', 'Table Deleted');
     }
 }
